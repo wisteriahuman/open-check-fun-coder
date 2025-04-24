@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 type SwitchProps = {
     className?: string;
@@ -20,8 +21,20 @@ export default function Switch({ className = "" }: SwitchProps) {
             <label className="absolute top-60 left-8 text-9xl text-gray-100">閉</label>
             <label
                 htmlFor="switch-component"
-                className="absolute top-0 left-0 h-50 w-50 rounded-2xl cursor-pointer border border-gray-300 bg-white shadow-sm transition-all duration-150 peer-checked:translate-y-50 peer-checked:border-gray-100"
-            />  
+                className="absolute top-0 left-0 h-50 w-50 p-8 rounded-2xl cursor-pointer border border-gray-300 bg-white shadow-sm transition-all duration-150 peer-checked:translate-y-50 peer-checked:border-gray-100"
+            >
+                <Image
+                    src="/arrow.svg"
+                    alt="arrow"
+                    width={140}
+                    height={140}
+                    className={`
+                        transform transition-transform duration-300 ease-in-out
+                        peer-checked:-translate-y-12
+                        ${checked ? "rotate-270" : "rotate-90"}
+                    `}
+                />
+            </label>
         </div>
     );
 }
